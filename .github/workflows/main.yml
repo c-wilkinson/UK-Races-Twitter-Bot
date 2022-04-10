@@ -26,6 +26,7 @@ jobs:
           ACCESS_SECRET: ${{ secrets.access_token_secret }}
         run: python bot.py
       - name: Upload Database
+        if: always()
         run: |
           git config --global user.name 'GithubBot'
           git remote set-url origin https://x-access-token:${{ secrets.TOKEN_GITHUB }}@github.com/${{ github.repository }}
