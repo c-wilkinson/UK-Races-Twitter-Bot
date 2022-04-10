@@ -35,7 +35,7 @@ def getRss(twitterApi):
                     message = postType + " " + twitterLengthTitle + " : " + link
                     saveLink(link)
                     print("Posted:", link)
-                    # twitterApi.update_status(message)
+                    twitterApi.update_status(message)
         else:
             print("Nothing found in feed", rssFeed)
 
