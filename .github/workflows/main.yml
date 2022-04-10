@@ -25,7 +25,7 @@ jobs:
           API_SECRET: ${{ secrets.consumer_secret }}
           ACCESS_TOKEN: ${{ secrets.access_token }}
           ACCESS_SECRET: ${{ secrets.access_token_secret }}
-        run: python twitter-bot.py
+        run: python bot.py
       - name: Upload Database
         run: |
           git config --global user.name 'GithubBot'
