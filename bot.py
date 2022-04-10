@@ -8,7 +8,12 @@ import time
 from auth import (consumer_key, consumer_secret, access_token, access_token_secret)
 
 def getRss(twitterApi):
-    rssFeeds = { "#UKRun #UKRace #Running #RunChat" : "https://rss.app/feeds/fSiPNAlJig7J4FR3.xml" }
+    rssFeeds = { "#UKRun #UKRace #Running #RunChat #5k" : "https://rss.app/feeds/jQpuiIuSLzo5uqOA.xml",
+               "#UKRun #UKRace #Running #RunChat #10k" : "https://rss.app/feeds/LDekrzpK19mo4fJH.xml",
+               "#UKRun #UKRace #Running #RunChat #halfmarathon" : "https://rss.app/feeds/LDekrzpK19mo4fJH.xml",
+               "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
+               "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
+               "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
     for postType in rssFeeds:
         url = rssFeeds[postType]
         rssFeed = feedparser.parse(url)
