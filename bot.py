@@ -15,8 +15,8 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
                "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
     driverPath = ChromeDriverManager().install()
-    service = webdriver.chrome.service(driverPath)
-    options = webdriver.chrome.options()
+    service = webdriver.chrome.service.Service(driverPath)
+    options = webdriver.chrome.options.Options()
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
     browser = webdriver.Chrome(service=service, options=options)
