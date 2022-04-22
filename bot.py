@@ -3,8 +3,6 @@ import feedparser
 import tweepy
 from pyvirtualdisplay import Display
 from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 from auth import (consumer_key, consumer_secret, access_token, access_token_secret)
@@ -16,8 +14,9 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
                "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
-    service = Service(ChromeDriverManager().install())
-    options = Options()
+    driverPath = ChromeDriverManager().install()
+    service = webdriver.Service(driverPath)
+    options = webdriver.Options()
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
     browser = webdriver.Chrome(service=service, options=options)
