@@ -4,6 +4,7 @@ import tweepy
 from pyvirtualdisplay import Display
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 from auth import (consumer_key, consumer_secret, access_token, access_token_secret)
