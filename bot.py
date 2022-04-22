@@ -14,27 +14,37 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
                "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
+    # On Linux, always have to start the Display before starting Chrome
+    # Otherwise Chrome fails to start with a terrible error message that is hard to diagnose.
     display = Display(visible=0, size=(800, 800))
     display.start()
     driverPath = ChromeDriverManager().install()
     service = webdriver.chrome.service.Service(driverPath)
     options = webdriver.chrome.options.Options()
+    # Hoping that these options stop the occasional crashes that are observed in this
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
+    # As of https://github.com/SeleniumHQ/selenium/issues/9125, only Service and Options are 
+    # supposed to be used here, not executable_path
     browser = webdriver.Chrome(service=service, options=options)
     for postType in rssFeeds:
         url = rssFeeds[postType]
+        print("Parse RSS Feed from: ", url)
         rssFeed = feedparser.parse(url)
         if rssFeed:
             for item in rssFeed["items"]:
                 url = item["link"]
-                blogTitle = item["title"].replace(" | Book @ Findarace", "")
+                print("Found: ", url)
                 browser.get(url)
                 time.sleep(15)
                 link = browser.current_url
+                print("URL parsed to: ", link)
                 if checkLink(link):
                     print("Already posted:", link)
                 else:
+                    print("Not yet posted: ", link)
+                    blogTitle = item["title"].replace(" | Book @ Findarace", "")
+                    print("Set potential blog title:", blogTitle)
                     twitterLengthTitle = (blogTitle[:160] + '...') if len(blogTitle) > 160 else blogTitle
                     message = postType + " " + twitterLengthTitle + " : " + link
                     saveLink(link)
