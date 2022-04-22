@@ -16,10 +16,11 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
                "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
+    service = Service(ChromeDriverManager().install())
     options = Options()
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
-    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+    browser = webdriver.Chrome(service=service, options=options)
     for postType in rssFeeds:
         url = rssFeeds[postType]
         rssFeed = feedparser.parse(url)
