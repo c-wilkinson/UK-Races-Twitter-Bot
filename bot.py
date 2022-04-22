@@ -14,6 +14,8 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
                "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
+    display = Display(visible=0, size=(800, 800))
+    display.start()
     driverPath = ChromeDriverManager().install()
     service = webdriver.chrome.service.Service(driverPath)
     options = webdriver.chrome.options.Options()
@@ -27,8 +29,6 @@ def getRss(twitterApi):
             for item in rssFeed["items"]:
                 url = item["link"]
                 blogTitle = item["title"].replace(" | Book @ Findarace", "")
-                display = Display(visible=0, size=(800, 800))
-                display.start()
                 browser.get(url)
                 time.sleep(15)
                 link = browser.current_url
