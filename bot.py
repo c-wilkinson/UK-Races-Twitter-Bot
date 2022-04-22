@@ -32,7 +32,6 @@ def getRss(twitterApi):
                 browser.get(url)
                 time.sleep(15)
                 link = browser.current_url
-                browser.quit()
                 if checkLink(link):
                     print("Already posted:", link)
                 else:
@@ -43,6 +42,7 @@ def getRss(twitterApi):
                     twitterApi.update_status(message)
         else:
             print("Nothing found in feed", rssFeed)
+    browser.quit()
 
 def checkLink(link):
     conn = sqlite3.connect('rssFeed.sqlite')
