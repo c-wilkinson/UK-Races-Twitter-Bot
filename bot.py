@@ -3,6 +3,7 @@ import feedparser
 import tweepy
 from pyvirtualdisplay import Display
 from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 import time
 from auth import (consumer_key, consumer_secret, access_token, access_token_secret)
@@ -14,6 +15,10 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
                "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
+    options = Options()
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("--no-sandbox")
+    browser = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
     for postType in rssFeeds:
         url = rssFeeds[postType]
         rssFeed = feedparser.parse(url)
@@ -23,7 +28,6 @@ def getRss(twitterApi):
                 blogTitle = item["title"].replace(" | Book @ Findarace", "")
                 display = Display(visible=0, size=(800, 800))
                 display.start()
-                browser = webdriver.Chrome(ChromeDriverManager().install())
                 browser.get(url)
                 time.sleep(15)
                 link = browser.current_url
