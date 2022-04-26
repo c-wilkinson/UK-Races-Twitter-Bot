@@ -13,7 +13,8 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #halfmarathon" : "https://rss.app/feeds/LDekrzpK19mo4fJH.xml",
                "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
-               "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml"}
+               "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml",
+               "#UKRun #UKRace #Running #RunChat #Virtual @VirtualRunnerUK" : "https://rss.app/new-rss-feed?step=2&feed=Gs3P4JoSF3px553X"}
     # On Linux, always have to start the Display before starting Chrome
     # Otherwise Chrome fails to start with a terrible error message that is hard to diagnose.
     display = Display(visible=0, size=(800, 800))
@@ -56,6 +57,8 @@ def getRss(twitterApi):
     browser.quit()
 
 def checkLink(link):
+    if link.lower() == "https://www.virtualrunneruk.com/races/?rfo=newest&rfm=":
+        return True
     conn = sqlite3.connect('rssFeed.sqlite')
     conn.row_factory = sqlite3.Row
     cur = conn.cursor()
