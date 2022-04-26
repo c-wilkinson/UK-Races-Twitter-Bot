@@ -14,7 +14,7 @@ def getRss(twitterApi):
                "#UKRun #UKRace #Running #RunChat #marathon" : "https://rss.app/feeds/bPeWWhxhQrX7deRc.xml",
                "#UKRun #UKRace #Running #RunChat #ultramarathon" : "https://rss.app/feeds/BtpOpAFSdcRRBvkU.xml",
                "#UKRun #UKRace #Running #RunChat #10m" : "https://rss.app/feeds/6lzgWkrc9168QruP.xml",
-               "#UKRun #UKRace #Running #RunChat #Virtual @VirtualRunnerUK" : "https://rss.app/new-rss-feed?step=2&feed=Gs3P4JoSF3px553X"}
+               "#UKRun #UKRace #Running #RunChat #Virtual @VirtualRunnerUK" : "https://rss.app/feeds/MQVYhEn7NluoLhg7.xml"}
     # On Linux, always have to start the Display before starting Chrome
     # Otherwise Chrome fails to start with a terrible error message that is hard to diagnose.
     display = Display(visible=0, size=(800, 800))
