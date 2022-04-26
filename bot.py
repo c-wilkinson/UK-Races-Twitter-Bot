@@ -24,6 +24,7 @@ def getRss(twitterApi):
     # Hoping that these options stop the occasional crashes that are observed in this
     options.add_argument("--disable-dev-shm-usage")
     options.add_argument("--no-sandbox")
+    options.add_argument("--disable-site-isolation-trials")
     # As of https://github.com/SeleniumHQ/selenium/issues/9125, only Service and Options are
     # supposed to be used here, not executable_path
     browser = webdriver.Chrome(service=service, options=options)
