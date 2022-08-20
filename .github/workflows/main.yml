@@ -15,8 +15,8 @@ jobs:
         with: 
               timeout_seconds: 30
               max_attempts: 3
-        shell: bash
-        command: |
+              shell: bash
+              command: |
           python -m pip install --upgrade pip
           pip install feedparser
           pip install tweepy
@@ -33,8 +33,8 @@ jobs:
         with: 
               timeout_seconds: 30
               max_attempts: 3        
-        shell: bash
-        command: python bot.py
+              shell: bash
+              command: python bot.py
       - name: Upload Database
         if: always()
         run: |
