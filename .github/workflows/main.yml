@@ -16,7 +16,7 @@ jobs:
               timeout_seconds: 30
               max_attempts: 3
               shell: bash
-              command: |
+              command: 
           python -m pip install --upgrade pip
           pip install feedparser
           pip install tweepy
