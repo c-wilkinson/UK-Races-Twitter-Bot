@@ -12,7 +12,7 @@ jobs:
         uses: actions/setup-python@v2
       - name: Install dependencies
         uses: nick-invision/retry@v2
-        with: 
+        with:
               timeout_seconds: 30
               max_attempts: 3
               command: |
@@ -29,7 +29,7 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.access_token }}
           ACCESS_SECRET: ${{ secrets.access_token_secret }}
         uses: nick-invision/retry@v2
-        with: 
+        with:
               timeout_seconds: 30
               max_attempts: 3        
               command: python bot.py
