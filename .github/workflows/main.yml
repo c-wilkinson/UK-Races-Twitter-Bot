@@ -26,7 +26,7 @@ jobs:
           ACCESS_SECRET: ${{ secrets.access_token_secret }}
         uses: nick-invision/retry@v2
         with:
-              timeout_seconds: 30
+              timeout_minutes: 45
               max_attempts: 3        
               command: python bot.py
       - name: Upload Database
